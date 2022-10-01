@@ -1,6 +1,6 @@
 import axios from "axios"
 import type { HeadFC } from "gatsby"
-import React, { useEffect } from "react"
+import React from "react"
 import useSWR from "swr"
 
 const listStyle = {
@@ -47,10 +47,6 @@ const IndexPage = () => {
     ],
     fetcher
   )
-  console.log(data)
-  useEffect(() => {
-    console.log(checked)
-  }, [checked])
 
   return (
     <main>

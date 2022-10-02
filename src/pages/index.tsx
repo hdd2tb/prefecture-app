@@ -36,8 +36,6 @@ const IndexPage = () => {
     prefCode: 20,
   })
 
-  console.log(dataPop?.result?.data[0].data)
-  const e = []
   return (
     <main>
       {loadingPref || loadingPop || errorPref || errorPop ? (

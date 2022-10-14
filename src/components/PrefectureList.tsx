@@ -5,7 +5,7 @@ import usePrefectures, { Pref } from "../hooks/usePrefectures"
 import CheckBox from "./CheckBox"
 
 const listStyles = {
-  columnCount: 2,
+  columnCount: 3,
 }
 
 const PrefectureList: React.FC = () => {

@@ -1,11 +1,12 @@
+import { HeadFC, Link } from "gatsby"
 import * as React from "react"
-import { Link, HeadFC } from "gatsby"
 
 const pageStyles = {
   color: "#232129",
   padding: "96px",
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
 }
+
 const headingStyles = {
   marginTop: 0,
   marginBottom: 64,

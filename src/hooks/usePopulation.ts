@@ -1,7 +1,7 @@
 import axios from "axios"
 import useSWR from "swr"
 
-interface InnerData {
+export interface InnerData {
   year: number
   value: number
 }
@@ -23,10 +23,6 @@ interface fetchReturn {
   statusCode?: string
 }
 
-interface Props {
-  prefCode: number
-}
-
 const fetcher = (
   url: string,
   headers: { [key: string]: string },
@@ -39,14 +35,18 @@ const fetcher = (
     })
     .then((res) => res.data)
 
-const usePopulation = ({ prefCode }: Props) => {
+const usePopulation = (prefCode: number, shouldFetch = true) => {
   const { data, error } = useSWR(
-    [
-      "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear",
-      { "X-API-KEY": process.env.GATSBY_RESAS_API_KEY },
-      { cityCode: "-", prefCode },
-    ],
-    fetcher
+    () =>
+      shouldFetch
+        ? [
+            "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear",
+            { "X-API-KEY": process.env.GATSBY_RESAS_API_KEY },
+            { cityCode: "-", prefCode },
+          ]
+        : null,
+    fetcher,
+    { suspense: false }
   )
 
   return {

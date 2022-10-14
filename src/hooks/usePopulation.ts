@@ -40,7 +40,7 @@ const usePopulation = (prefCode: number, shouldFetch = true) => {
     () =>
       shouldFetch
         ? [
-            "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear",
+            `${process.env.GATSBY_ENDPOINT}/api/v1/population/composition/perYear`,
             { "X-API-KEY": process.env.GATSBY_RESAS_API_KEY },
             { cityCode: "-", prefCode },
           ]

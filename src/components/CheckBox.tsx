@@ -10,7 +10,10 @@ type Props = Omit<JSX.IntrinsicElements["input"], "name" | "type" | "value"> & {
 
 const CheckBox: React.FC<Props> = ({ checked, name, value, onChange }) => {
   const [prefPops, setPrefPops] = useRecoilState(prefPopsState)
-  const { data } = usePopulation(value, checked)
+  const { data } = usePopulation(
+    value,
+    checked && prefPops.every((prefPop) => prefPop.name !== name)
+  )
 
   useEffect(() => {
     if (

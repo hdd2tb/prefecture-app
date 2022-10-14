@@ -26,7 +26,7 @@ const fetcher = (
 const usePrefectures = (suspense = true) => {
   const { data, error } = useSWR(
     [
-      "https://opendata.resas-portal.go.jp/api/v1/prefectures",
+      `${process.env.GATSBY_ENDPOINT}/api/v1/prefectures`,
       { "X-API-KEY": process.env.GATSBY_RESAS_API_KEY },
     ],
     fetcher,
